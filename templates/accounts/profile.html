@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Profile</h2>
+    <div class="form-group">
+        <form class="profile-form" action="{% url 'accounts:profile' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Update Profile</button>
+
+        </form>
+        <button type="submit"><a href="{% url 'accounts:delete_account' %}">Delete</a></button>
+    </div>
+{% endblock %}
