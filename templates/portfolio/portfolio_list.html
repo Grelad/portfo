@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>My Portfolios</h2>
+    <div class="container">
+        <a href="{% url 'portfolio:add_portfolio' %}" class="btn btn-default btn-lg">
+            <i class="bi bi-plus-circle"></i>
+            Create New Portfolio
+        </a>
+        <div>
+            {% for portfolio in portfolio_list %}
+                <div class="card"
+                     style="width: 20rem; display: inline-flex; margin:10px; align-items: flex-start; height: 300px">
+                    <div class="card-body">
+                        <h5 class="card-tittle">{{ portfolio.name }}</h5>
+                        <p class="card-text" style="height: 50%">{{ portfolio.description|truncatewords:"15" }}</p>
+                        <p style="">Date Created: {{ portfolio.created_at }}</p>
+                        <a href="{% url 'portfolio:portfolio_details' portfolio.pk %}" class="btn btn-primary stretched-link">Details</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

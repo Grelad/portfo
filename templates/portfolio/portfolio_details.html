@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ portfolio.name }}{% endblock %}
+
+{% block content %}
+    <h2>{{ portfolio.name }}</h2>
+    <small>By: {{ portfolio.owner }}</small>
+    <br/>
+    <hr>
+    <br/>
+    <p>{{ portfolio.description }}</p>
+    <p>{{ portfolio.images }}</p>
+    <br/><br/>
+    <a href="{% url 'portfolio:home' %}" class="btn btn-secondary">Home</a>
+    <a href="{% url 'portfolio:portfolio' %}" class="btn btn-secondary">Back to Portfolios</a>
+{% endblock %}

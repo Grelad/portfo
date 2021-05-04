@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Homepage of the site</h2>
+    <div class="input-group">
+        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+               aria-describedby="search-addon"/>
+        <button type="button" class="btn btn-outline-primary">Search</button>
+    </div>
+    <hr>
+    <div>
+        <ul>
+            {% for image in image_list %}
+                <li>
+                    <p>Name: {{ image.name }}</p>
+                    <p>Description: {{ image.description|truncatewords:"100" }}</p>
+                    <a href="{% url 'portfolio:image_details' image.pk %}">
+                        <img src="{{ image.photo.url }}" class="img-thumbnail" alt="" width="20%">
+                    </a>
+                    <br/>
+                    <p>Portfolio:
+                        <a href="{% url 'portfolio:portfolio_details' image.portfolio_id %}">
+                            {{ image.portfolio.name }}
+                        </a>
+                    </p>
+                    <p>Created at: {{ image.created_at }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

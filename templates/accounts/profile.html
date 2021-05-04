@@ -6,9 +6,11 @@
         <form class="profile-form" action="{% url 'accounts:profile' %}" method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Update Profile</button>
-
+            <button class="btn btn-primary" type="submit">Update Profile</button>
+            <a class="btn btn-danger" href="{% url 'accounts:delete_account' %}">
+                Delete
+            </a>
         </form>
-        <button type="submit"><a href="{% url 'accounts:delete_account' %}">Delete</a></button>
+
     </div>
 {% endblock %}

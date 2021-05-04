@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'portfo.apps.accounts',
+    'portfo.apps.portfolio',
 ]
 
 MIDDLEWARE = [
@@ -122,9 +123,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL, LOGOUT_REDIRECT_URL = 'home', 'home'
+LOGIN_REDIRECT_URL, LOGOUT_REDIRECT_URL = 'portfolio:home', 'portfolio:home'

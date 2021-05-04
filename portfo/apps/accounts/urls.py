@@ -1,5 +1,6 @@
 from django.contrib.auth import views as auth_views
 from django.urls import path
+
 from portfo.apps.accounts import views
 
 app_name = 'accounts'

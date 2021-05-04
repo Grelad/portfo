@@ -18,7 +18,7 @@
     <form method="post" action="{% url 'accounts:login' %}">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Login</button>
+        <button class="btn btn-primary"  type="submit">Login</button>
         <input type="hidden" name="next" value="{{ next }}">
     </form>
 
