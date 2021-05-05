@@ -11,14 +11,23 @@
             {% for portfolio in portfolio_list %}
                 <div class="card"
                      style="width: 20rem; display: inline-flex; margin:10px; align-items: flex-start; height: 300px">
+                    <div class="card-header container-fluid">{{ portfolio.name }}</div>
                     <div class="card-body">
-                        <h5 class="card-tittle">{{ portfolio.name }}</h5>
                         <p class="card-text" style="height: 50%">{{ portfolio.description|truncatewords:"15" }}</p>
                         <p style="">Date Created: {{ portfolio.created_at }}</p>
-                        <a href="{% url 'portfolio:portfolio_details' portfolio.pk %}" class="btn btn-primary stretched-link">Details</a>
+                    </div>
+                    <div class="card-footer container-fluid">
+                        <div class="btn-wrapper text-center d-flex justify-content-between">
+                            <a class="btn btn-primary  btn-sm text-white d-flex align-items-center"
+                               href="{% url 'portfolio:portfolio_details' portfolio.pk %}">
+                                Details
+                            </a>
+                            <a href="#" class="btn btn-danger">Delete</a>
+                        </div>
                     </div>
                 </div>
             {% endfor %}
+
         </div>
     </div>
 {% endblock %}

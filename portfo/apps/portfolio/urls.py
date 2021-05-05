@@ -9,5 +9,6 @@ urlpatterns = [
     path('image/<int:pk>', views.ImageDetailView.as_view(), name='image_details'),
     path('add_portfolio/', views.AddPortfolioView.as_view(), name='add_portfolio'),
     path('portfolio/', views.PortfoliosView.as_view(), name='portfolio'),
-    path('portfolio/<int:pk>', views.PortfolioDetailView.as_view(), name='portfolio_details')
+    path('portfolio/<int:pk>', views.PortfolioDetailView.as_view(), name='portfolio_details'),
+    path('add_image/', views.AddImageView.as_view(), name='add_image'),
 ]

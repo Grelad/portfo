@@ -1,6 +1,7 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordChangeView as PasswordView
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
@@ -37,7 +38,7 @@ class SignUpView(generic.CreateView):
         return super().dispatch(*args, **kwargs)
 
 
-class EditProfileView(generic.UpdateView):
+class EditProfileView(LoginRequiredMixin, generic.UpdateView):
     form_class = EditProfileForm
     template_name = 'accounts/profile.html'
     success_url = reverse_lazy('portfolio:home')

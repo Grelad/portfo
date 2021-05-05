@@ -40,3 +40,14 @@ class PortfolioDetailView(DetailView):
     model = Portfolio
     fields = '__all__'
     template_name = 'portfolio/portfolio_details.html'
+
+
+class AddImageView(LoginRequiredMixin, CreateView):
+    model = Image
+    template_name = 'portfolio/add_image.html'
+    fields = ('name', 'description', 'photo')
+
+    def form_valid(self, form):
+        form.instance.owner_id = self.request.user.id
+        # form.instance.portfolio
+        return super().form_valid(form)

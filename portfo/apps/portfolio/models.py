@@ -17,9 +17,12 @@ class Portfolio(models.Model):
     def get_absolute_url():
         return reverse('portfolio:portfolio')
 
+    def get_portfolio_images(self):
+        return Image.objects.filter(portfolio__pk=self.id)
+
 
 class Image(models.Model):
-    portfolio = models.ForeignKey(Portfolio, on_delete=models.CASCADE)
+    portfolio = models.ForeignKey(Portfolio, on_delete=models.CASCADE, null=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=255)
     description = models.TextField(max_length=1000)

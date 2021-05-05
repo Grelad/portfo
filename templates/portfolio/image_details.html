@@ -4,12 +4,18 @@
 
 {% block content %}
     <h2>{{ image.name }}</h2>
-    <small>By: {{ image.owner }} | Portfolio name: {{ image.portfolio.name }}</small>
+    <small>
+        By: {{ image.owner }} | Portfolio name:
+        <a href="{% url 'portfolio:portfolio_details' image.portfolio_id %}">
+            {{ image.name }}
+        </a>
+    </small>
     <br/>
     <hr>
     <br/>
     <p>{{ image.description }}</p>
-    <img src="{{ image.photo.url }}" class="img-thumbnail" alt="" width="450px">
+    <img src="{{ image.photo.url }}" class="img-thumbnail" alt="">
     <br/><br/>
+    <a href="{% url 'portfolio:portfolio_details' image.portfolio_id %}" class="btn btn-secondary">Go to Portfolio</a>
     <a href="{% url 'portfolio:home' %}" class="btn btn-secondary">Back</a>
 {% endblock %}
